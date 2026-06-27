@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Masih Ngontrak? Hitung Berapa Uangmu yang Sudah Lenyap Selama Ini</title>
+<meta name="description" content="Kamu sudah kerja bertahun-tahun — tapi tiap bulan uangmu masih pergi ke kantong orang lain. Hitung sekarang berapa yang sudah hilang, dan pelajari cara mengubahnya.">
+
+<!-- Preconnect -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+
+<!-- Preload hero image LCP -->
+<link rel="preload" as="image" href="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1400&q=85&auto=format&fit=crop" fetchpriority="high">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','YOUR_PIXEL_ID');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'Akhtara Residence TOFU LP',content_category:'Problem Awareness Properti',content_ids:['tofu-kontrakan-calculator'],content_type:'article',currency:'IDR'});
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+<style>
+/* =====================
+   RESET
+   ===================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:'Inter',system-ui,sans-serif;background:#F4F0E6;color:#1E1E1E;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.7}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input[type=range]{-webkit-appearance:none;appearance:none}
+
+/* =====================
+   TOKENS
+   ===================== */
+:root{
+  --ink:#1A1A1A;
+  --ink2:#2D2D2D;
+  --sub:#4A4A4A;
+  --muted:#787878;
+  --cream:#F4F0E6;
+  --cream2:#EDE8DB;
+  --white:#FFFFFF;
+  --pain:#B83220;
+  --pain-light:#D94332;
+  --pain-pale:rgba(184,50,32,0.10);
+  --hope:#1B3D2F;
+  --hope-mid:#2A5C42;
+  --hope-light:#3A7A58;
+  --hope-pale:rgba(27,61,47,0.09);
+  --gold:#C8A84B;
+  --gold-light:#E2C46E;
+  --dark:#111410;
+  --dark2:#1A1C18;
+  --r:10px;
+  --r-lg:18px;
+  --sh:0 2px 14px rgba(0,0,0,0.07);
+  --sh-lg:0 8px 36px rgba(0,0,0,0.13);
+  --tr:all 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* =====================
+   TYPOGRAPHY
+   ===================== */
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.18;letter-spacing:-0.025em}
+h1{font-size:clamp(1.9rem,5.5vw,3.2rem);font-weight:900}
+h2{font-size:clamp(1.45rem,4vw,2.2rem);font-weight:800}
+h3{font-size:clamp(1.05rem,2.5vw,1.3rem);font-weight:700}
+p{font-size:0.97rem;line-height:1.75;color:var(--sub)}
+
+/* =====================
+   LAYOUT
+   ===================== */
+.wrap{width:100%;max-width:940px;margin:0 auto;padding:0 20px}
+.wrap-sm{width:100%;max-width:700px;margin:0 auto;padding:0 20px}
+section{padding:68px 0}
+@media(max-width:600px){section{padding:52px 0}}
+
+/* =====================
+   UTILITIES
+   ===================== */
+.tc{text-align:center}
+.c-pain{color:var(--pain)}
+.c-hope{color:var(--hope)}
+.c-gold{color:var(--gold)}
+.c-white{color:var(--white)}
+
+.tag{display:inline-block;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.71rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:6px 14px;border-radius:50px;margin-bottom:14px}
+.tag-pain{background:var(--pain-pale);color:var(--pain)}
+.tag-hope{background:var(--hope-pale);color:var(--hope)}
+.tag-dark{background:rgba(255,255,255,0.10);color:rgba(255,255,255,0.80)}
+.tag-gold{background:rgba(200,168,75,0.18);color:var(--gold)}
+
+.div-line{width:52px;height:4px;border-radius:2px;margin:14px auto 0}
+.div-pain{background:linear-gradient(90deg,var(--pain),var(--pain-light))}
+.div-hope{background:linear-gradient(90deg,var(--hope),var(--hope-light))}
+.div-gold{background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+
+/* Highlight effects */
+.hl-red{background:linear-gradient(120deg,rgba(184,50,32,0.18) 0%,rgba(217,67,50,0.12) 100%);padding:2px 5px;border-radius:4px;color:var(--pain);font-weight:700}
+.hl-gold{background:linear-gradient(120deg,rgba(200,168,75,0.22) 0%,rgba(226,196,110,0.15) 100%);padding:2px 5px;border-radius:4px;color:#8A6E1A;font-weight:700}
+.hl-dark{background:var(--ink2);padding:2px 6px;border-radius:4px;color:var(--white);font-weight:700}
+
+/* Scroll reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity 0.55s ease,transform 0.55s ease}
+.rv.on{opacity:1;transform:none}
+.rv-l{opacity:0;transform:translateX(-26px);transition:opacity 0.55s ease,transform 0.55s ease}
+.rv-l.on{opacity:1;transform:none}
+.rv-r{opacity:0;transform:translateX(26px);transition:opacity 0.55s ease,transform 0.55s ease}
+.rv-r.on{opacity:1;transform:none}
+.d1{transition-delay:0.07s}.d2{transition-delay:0.14s}.d3{transition-delay:0.21s}.d4{transition-delay:0.28s}
+@media(prefers-reduced-motion:reduce){.rv,.rv-l,.rv-r{opacity:1!important;transform:none!important;transition:none!important}}
+
+/* =====================
+   BUTTONS
+   ===================== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;border-radius:50px;padding:15px 28px;transition:var(--tr);cursor:pointer;border:none;font-size:0.97rem;text-align:center;white-space:nowrap}
+.btn-hope{background:linear-gradient(135deg,var(--hope) 0%,var(--hope-mid) 100%);color:var(--white);box-shadow:0 4px 20px rgba(27,61,47,0.30)}
+.btn-hope:hover{background:linear-gradient(135deg,#142E22 0%,#1F4530 100%);transform:translateY(-2px);box-shadow:0 8px 28px rgba(27,61,47,0.40)}
+.btn-pain{background:linear-gradient(135deg,var(--pain) 0%,var(--pain-light) 100%);color:var(--white);box-shadow:0 4px 18px rgba(184,50,32,0.30)}
+.btn-pain:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(184,50,32,0.40)}
+.btn-gold{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);color:#1A1A1A;box-shadow:0 4px 18px rgba(200,168,75,0.32)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(200,168,75,0.42)}
+.btn-ghost-w{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.40)}
+.btn-ghost-w:hover{background:rgba(255,255,255,0.10);border-color:rgba(255,255,255,0.75)}
+.btn-lg{padding:18px 36px;font-size:1.06rem}
+
+/* =====================
+   ANN BAR
+   ===================== */
+#ann{background:var(--dark2);padding:11px 20px;text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.78rem;font-weight:700;color:var(--gold-light);letter-spacing:0.5px}
+#ann em{color:rgba(255,255,255,0.55);font-style:normal}
+
+/* =====================
+   HERO
+   ===================== */
+#hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden;background:var(--dark)}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;z-index:0;filter:grayscale(30%)}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(150deg,rgba(17,20,16,0.95) 0%,rgba(17,20,16,0.82) 50%,rgba(17,20,16,0.60) 100%);z-index:1}
+.hero-body{position:relative;z-index:2;padding:110px 0 90px;width:100%}
+
+/* Editorial label */
+.hero-label{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;animation:fdown 0.6s ease both}
+@keyframes fdown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+.lbl-dot{width:8px;height:8px;border-radius:50%;background:var(--pain-light);animation:dot-pulse 2s ease infinite}
+@keyframes dot-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.7)}}
+.lbl-txt{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.76rem;font-weight:700;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:2px}
+
+#hero h1{color:var(--white);margin-bottom:18px;animation:fup 0.65s ease 0.1s both;text-shadow:0 2px 30px rgba(0,0,0,0.4);max-width:760px}
+#hero h1 .line-pain{color:var(--pain-light);display:block;margin-top:6px}
+@keyframes fup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+.hero-desc{color:rgba(255,255,255,0.72);font-size:clamp(0.95rem,2.2vw,1.12rem);max-width:600px;margin-bottom:32px;animation:fup 0.65s ease 0.18s both;line-height:1.75}
+.hero-desc strong{color:rgba(255,255,255,0.95)}
+
+/* Stat strip in hero */
+.hero-stats{display:flex;flex-wrap:wrap;gap:0;margin-bottom:36px;animation:fup 0.65s ease 0.26s both}
+.hero-stat{padding:16px 24px;border-right:1px solid rgba(255,255,255,0.10)}
+.hero-stat:last-child{border-right:none}
+.hs-num{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:clamp(1.5rem,4vw,2rem);color:var(--pain-light);display:block;line-height:1}
+.hs-lbl{font-size:0.76rem;color:rgba(255,255,255,0.52);display:block;margin-top:4px;font-family:'Plus Jakarta Sans',sans-serif}
+@media(max-width:520px){.hero-stat{padding:12px 16px}}
+
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;animation:fup 0.65s ease 0.34s both}
+@media(max-width:480px){.hero-ctas .btn{width:100%;justify-content:center}}
+
+/* Scroll indicator */
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;animation:fup 0.65s ease 0.5s both;cursor:pointer}
+.scroll-hint span{font-size:0.72rem;color:rgba(255,255,255,0.45);font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:1px;text-transform:uppercase}
+.scroll-arrow{width:20px;height:20px;border-right:2px solid rgba(255,255,255,0.35);border-bottom:2px solid rgba(255,255,255,0.35);transform:rotate(45deg);animation:bounce-arrow 1.6s ease-in-out infinite}
+@keyframes bounce-arrow{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(5px)}}
+
+/* =====================
+   CALCULATOR SECTION
+   ===================== */
+#calc{background:var(--cream);padding:72px 0}
+.calc-card{background:var(--white);border-radius:var(--r-lg);padding:44px;box-shadow:0 4px 40px rgba(0,0,0,0.10);border-top:5px solid var(--pain)}
+@media(max-width:600px){.calc-card{padding:28px 22px}}
+
+.calc-intro{margin-bottom:36px}
+.calc-intro h2{margin-bottom:10px;color:var(--ink)}
+.calc-intro p{max-width:540px}
+
+.calc-inputs{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:36px}
+@media(max-width:620px){.calc-inputs{grid-template-columns:1fr}}
+
+.ci-group label{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.87rem;color:var(--ink);margin-bottom:10px}
+.ci-group label span{color:var(--pain);font-size:1rem}
+
+/* Slider styling */
+.slider-wrap{position:relative;padding-bottom:8px}
+input[type=range]{width:100%;height:6px;border-radius:3px;background:var(--cream2);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--pain);cursor:pointer;box-shadow:0 2px 8px rgba(184,50,32,0.35);border:3px solid var(--white)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--pain);cursor:pointer;box-shadow:0 2px 8px rgba(184,50,32,0.35);border:3px solid var(--white)}
+.slider-val{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.55rem;color:var(--pain);margin-bottom:8px;display:block}
+
+/* Rent quick select */
+.rent-btns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.rb{padding:8px 14px;border-radius:50px;border:2px solid var(--cream2);background:var(--white);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:700;color:var(--sub);cursor:pointer;transition:var(--tr)}
+.rb:hover{border-color:var(--pain);color:var(--pain)}
+.rb.active{background:var(--pain);border-color:var(--pain);color:var(--white)}
+
+/* Result box */
+.calc-result{background:linear-gradient(135deg,var(--ink) 0%,var(--dark2) 100%);border-radius:var(--r-lg);padding:32px;text-align:center;position:relative;overflow:hidden}
+.calc-result::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(184,50,32,0.18) 0%,transparent 70%);pointer-events:none}
+.cr-label{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.76rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,0.50);margin-bottom:10px}
+.cr-amount{font-family:'Plus Jakarta Sans',sans-serif;font-weight:900;font-size:clamp(2rem,7vw,3.5rem);color:var(--pain-light);line-height:1;margin-bottom:6px;transition:all 0.3s ease}
+.cr-sub{font-size:0.82rem;color:rgba(255,255,255,0.50);margin-bottom:20px}
+.cr-breakdown{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+.cr-bd-item{text-align:center}
+.cr-bd-num{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.15rem;color:rgba(255,255,255,0.88);display:block}
+.cr-bd-lbl{font-size:0.72rem;color:rgba(255,255,255,0.40)}
+.cr-divider{width:1px;background:rgba(255,255,255,0.12)}
+.cr-msg{background:rgba(184,50,32,0.20);border:1px solid rgba(184,50,32,0.35);border-radius:8px;padding:14px;font-size:0.87rem;color:rgba(255,255,255,0.80);line-height:1.6}
+.cr-msg strong{color:var(--pain-light)}
+
+/* =====================
+   COMPARISON SECTION — pain 1
+   ===================== */
+#compare-money{background:var(--cream2);padding:72px 0}
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px}
+@media(max-width:640px){.cmp-grid{grid-template-columns:1fr}}
+.cmp-col{border-radius:var(--r-lg);padding:28px;position:relative;overflow:hidden}
+.cmp-col-bad{background:var(--white);border:2px solid rgba(184,50,32,0.20)}
+.cmp-col-good{background:var(--hope);color:var(--white)}
+.cmp-col-badge{display:inline-block;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:5px 12px;border-radius:50px;margin-bottom:16px}
+.bad-badge{background:var(--pain-pale);color:var(--pain)}
+.good-badge{background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.85)}
+.cmp-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.08rem;margin-bottom:14px}
+.cmp-col-bad .cmp-title{color:var(--ink)}
+.cmp-col-good .cmp-title{color:var(--white)}
+.cmp-items{display:flex;flex-direction:column;gap:10px}
+.ci{display:flex;align-items:flex-start;gap:10px;font-size:0.87rem;line-height:1.55}
+.ci-ico{flex-shrink:0;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;margin-top:1px}
+.ci-bad .ci-ico{background:var(--pain-pale);color:var(--pain)}
+.ci-good .ci-ico{background:rgba(255,255,255,0.15);color:rgba(255,255,255,0.90)}
+.ci-bad{color:var(--sub)}
+.ci-good{color:rgba(255,255,255,0.82)}
+
+.cmp-same{text-align:center;padding:20px;background:rgba(27,61,47,0.06);border-radius:var(--r);margin-top:24px}
+.cmp-same p{font-size:0.9rem;color:var(--sub)}
+.cmp-same strong{color:var(--hope);font-size:1rem}
+
+/* =====================
+   PRICE GROWTH SECTION — pain 2
+   ===================== */
+#price-growth{background:var(--dark);padding:72px 0}
+.pg-chart-wrap{margin-top:36px;background:rgba(255,255,255,0.04);border-radius:var(--r-lg);padding:32px 28px}
+.pg-bars{display:flex;align-items:flex-end;gap:14px;height:200px;margin-bottom:16px}
+@media(max-width:480px){.pg-bars{gap:8px}}
+.pg-bar-col{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1}
+.pg-bar{width:100%;border-radius:6px 6px 0 0;position:relative;min-height:20px;transition:height 1.2s cubic-bezier(0.34,1.56,0.64,1)}
+.pg-bar-price{position:absolute;top:-26px;left:50%;transform:translateX(-50%);font-family:'Plus Jakarta Sans',sans-serif;font-size:0.65rem;font-weight:700;white-space:nowrap;color:rgba(255,255,255,0.70)}
+.pg-bar-year{font-family:'Plus Jakarta Sans',sans-serif;font-size:0.75rem;font-weight:700;color:rgba(255,255,255,0.40)}
+.pg-legend{display:flex;align-items:center;justify-content:flex-end;gap:14px;margin-top:8px}
+.pg-legend-item{display:flex;align-items:center;gap:6px;font-size:0.75rem;color:rgba(255,255,255,0.50);font-family:'Plus Jakarta Sans',sans-serif}
+.pg-legend-dot{width:10px;height:10px;border-radius:2px}
+.pg-insight{margin-top:24px;background:rgba(184,50,32,0.12);border:1px solid rgba(184,50,32,0.25);border-radius:var(--r);padding:18px 22px}
+.pg-insight p{font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.68}
+.pg-insight strong{color:var(--pain-light)}
+
+/* =====================
+   THE CYCLE — pain 3
+   ===================== */
+#the-cycle{background:var(--cream);padding:72px 0}
+.cycle-wrap{margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:0}
+.cycle-steps{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0}
+@media(max-width:600px){.cycle-steps{flex-direction:column;align-items:center}}
+.cycle-step{display:flex;flex-direction:column;align-items:center;gap:8px;padding:20px 16px;position:relative}
+.cs-ico{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;border:3px solid var(--cream2);background:var(--white);box-shadow:var(--sh);transition:var(--tr)}
+.cycle-step:hover .cs-ico{transform:scale(1.08)}
+.cs-label{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.83rem;color:var(--ink);text-align:center;max-width:80px;line-height:1.35}
+.cycle-arrow{font-size:1.2rem;color:var(--pain);font-weight:700;padding:0 4px;align-self:center;margin-top:-20px}
+@media(max-width:600px){.cycle-arrow{transform:rotate(90deg);margin:0}}
+.cycle-closing{background:linear-gradient(135deg,var(--pain) 0%,#9E2B1C 100%);color:var(--white);border-radius:var(--r-lg);padding:22px 30px;text-align:center;margin-top:28px;max-width:480px}
+.cycle-closing p{font-size:1rem;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;color:var(--white);line-height:1.6}
+.cycle-closing em{font-style:normal;color:rgba(255,255,255,0.65);font-size:0.85rem;display:block;margin-top:6px;font-family:'Inter',sans-serif;font-weight:400}
+
+/* =====================
+   AGITATION / TIMELINE
+   ===================== */
+#agitation{background:var(--dark2);padding:72px 0}
+.agi-intro p{color:rgba(255,255,255,0.68)}
+.agi-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:36px}
+@media(max-width:640px){.agi-grid{grid-template-columns:1fr}}
+.agi-col{border-radius:var(--r-lg);padding:28px;position:relative;overflow:hidden}
+.agi-bad{background:rgba(184,50,32,0.10);border:1.5px solid rgba(184,50,32,0.22)}
+.agi-good{background:rgba(27,61,47,0.35);border:1.5px solid rgba(27,61,47,0.50)}
+.agi-col-title{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1rem;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.agi-bad .agi-col-title{color:var(--pain-light)}
+.agi-good .agi-col-title{color:var(--gold-light)}
+.agi-timeline{display:flex;flex-direction:column;gap:0}
+.at-item{display:flex;gap:14px;position:relative;padding-bottom:18px}
+.at-item:last-child{padding-bottom:0}
+.at-item:not(:last-child)::after{content:'';position:absolute;left:11px;top:26px;width:2px;bottom:0;background:rgba(255,255,255,0.08)}
+.at-dot{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:800;font-family:'Plus Jakarta Sans',sans-serif;flex-shrink:0;margin-top:2px}
+.bad-dot{background:rgba(184,50,32,0.30);color:var(--pain-light);border:2px solid rgba(184,50,32,0.40)}
+.good-dot{background:rgba(27,61,47,0.50);color:var(--gold-light);border:2px solid rgba(200,168,75,0.40)}
+.at-year{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.77rem;color:rgba(255,255,255,0.40);display:block;margin-bottom:3px}
+.at-desc{font-size:0.86rem;line-height:1.6}
+.agi-bad .at-desc{color:rgba(255,255,255,0.68)}
+.agi-good .at-desc{color:rgba(255,255,255,0.80)}
+
+/* =====================
+   MISCONCEPTIONS / EDUCATION
+   ===================== */
+#edu{background:var(--cream);padding:72px 0}
+.edu-intro p{max-width:540px;margin:10px auto 0}
+.edu-cards{display:flex;flex-direction:column;gap:20px;margin-top:38px;max-width:740px;margin-left:auto;margin-right:auto}
+.edu-card{background:var(--white);border-radius:var(--r-lg);padding:0;overflow:hidden;box-shadow:var(--sh);transition:var(--tr)}
+.edu-card:hover{box-shadow:var(--sh-lg);transform:translateY(-2px)}
+.edu-card-head{display:flex;align-items:flex-start;gap:16px;padding:22px 24px;cursor:pointer}
+.edu-myth{flex:1}
+.edu-myth-label{font-size:0.7rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;text-transform:uppercase;letter-spacing:1.5px;color:var(--pain);margin-bottom:5px}
+.edu-myth-text{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.97rem;color:var(--ink);line-height:1.4}
+.edu-num{width:36px;height:36px;border-radius:50%;background:var(--pain-pale);color:var(--pain);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.edu-fact{padding:0 24px 22px 76px;display:none}
+.edu-fact.open{display:block}
+.edu-fact-label{font-size:0.7rem;font-weight:700;font-family:'Plus Jakarta Sans',sans-serif;text-transform:uppercase;letter-spacing:1.5px;color:var(--hope);margin-bottom:6px}
+.edu-fact-text{font-size:0.89rem;color:var(--sub);line-height:1.7;padding:14px 16px;background:var(--hope-pale);border-radius:8px;border-left:3px solid var(--hope)}
+.edu-toggle{font-size:1rem;color:var(--pain);font-weight:800;transition:var(--tr);flex-shrink:0;margin-top:2px}
+.edu-card.open .edu-toggle{transform:rotate(45deg)}
+.edu-card.open{border-left:3px solid var(--hope)}
+
+/* =====================
+   TEASE / BRIDGE SECTION
+   ===================== */
+#tease{background:linear-gradient(135deg,var(--hope) 0%,var(--dark2) 100%);padding:80px 0;position:relative;overflow:hidden}
+#tease::before{content:'';position:absolute;top:-80px;right:-80px;width:380px;height:380px;background:radial-gradient(circle,rgba(200,168,75,0.12) 0%,transparent 68%);pointer-events:none}
+#tease::after{content:'';position:absolute;bottom:-60px;left:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(200,168,75,0.08) 0%,transparent 68%);pointer-events:none}
+.tease-body{position:relative;z-index:1;text-align:center}
+.tease-body h2{color:var(--white);margin-bottom:12px}
+.tease-body p{color:rgba(255,255,255,0.72);max-width:560px;margin:0 auto 32px;font-size:1rem}
+
+.tease-points{display:flex;flex-direction:column;gap:14px;max-width:500px;margin:0 auto 36px}
+.tp{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);border-radius:var(--r);padding:14px 18px;text-align:left}
+.tp-ico{font-size:1.3rem;flex-shrink:0;line-height:1}
+.tp-txt{font-size:0.89rem;color:rgba(255,255,255,0.82);line-height:1.6}
+.tp-txt strong{color:var(--gold-light);display:block;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;margin-bottom:3px}
+
+.tease-cta-group{display:flex;flex-direction:column;gap:10px;align-items:center}
+@media(min-width:480px){.tease-cta-group{flex-direction:row;justify-content:center}}
+@media(max-width:480px){.tease-cta-group .btn{width:100%;justify-content:center}}
+
+.tease-note{font-size:0.78rem;color:rgba(255,255,255,0.40);margin-top:14px;font-family:'Inter',sans-serif}
+
+/* =====================
+   SOCIAL PROOF STRIP
+   ===================== */
+#proof-strip{background:var(--cream2);padding:44px 0}
+.proof-inner{display:flex;flex-wrap:wrap;justify-content:center;gap:32px;align-items:center}
+.pf-item{display:flex;align-items:center;gap:10px}
+.pf-ico{font-size:1.5rem}
+.pf-num{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:1.3rem;color:var(--hope);display:block;line-height:1}
+.pf-lbl{font-size:0.76rem;color:var(--muted)}
+.pf-sep{width:1px;height:36px;background:rgba(0,0,0,0.10)}
+
+/* =====================
+   FOOTER
+   ===================== */
+#foot{background:var(--dark);color:rgba(255,255,255,0.38);text-align:center;padding:22px 20px;font-size:0.77rem;line-height:1.7}
+#foot a{color:var(--gold-light)}
+
+/* =====================
+   STICKY CTA
+   ===================== */
+#sticky{position:fixed;bottom:18px;right:18px;z-index:999;opacity:0;pointer-events:none;transition:opacity 0.35s ease}
+#sticky.show{opacity:1;pointer-events:all}
+.st-btn{display:flex;align-items:center;gap:8px;padding:13px 20px;border-radius:50px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:0.86rem;cursor:pointer;border:none;box-shadow:0 4px 24px rgba(0,0,0,0.25);transition:var(--tr);white-space:nowrap;color:var(--white);background:linear-gradient(135deg,var(--hope),var(--hope-mid))}
+.st-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.32)}
+.st-pulse{width:9px;height:9px;border-radius:50%;background:#4ADE80;animation:st-p 2s ease infinite;flex-shrink:0}
+@keyframes st-p{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,0.6)}50%{box-shadow:0 0 0 5px rgba(74,222,128,0)}}
+
+/* =====================
+   RESPONSIVE MISC
+   ===================== */
+@media(max-width:600px){
+  .hero-body{padding:88px 0 80px}
+  .hero-stats{gap:0}
+  .hero-stat{padding:12px 14px}
+  .hs-num{font-size:1.35rem}
+  .calc-card{padding:24px 18px}
+  .pg-bar-price{font-size:0.58rem}
+  #sticky{bottom:14px;right:12px}
+  .st-btn{padding:11px 15px;font-size:0.81rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ANN BAR -->
+<div id="ann">
+  📢 Penting dibaca oleh siapapun yang masih menyewa atau ngontrak di wilayah
+  <em>Surabaya · Mojokerto · Gresik</em>
+</div>
+
+<!-- ================================
+     HERO — PATTERN INTERRUPT
+     ================================ -->
+<section id="hero">
+  <img
+    src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1400&q=85&auto=format&fit=crop"
+    alt="Seseorang menghitung keuangan dan tagihan"
+    class="hero-img" width="1400" height="933"
+    fetchpriority="high" loading="eager"
+  >
+  <div class="hero-ov" aria-hidden="true"></div>
+  <div class="hero-body">
+    <div class="wrap">
+      <div class="hero-label">
+        <div class="lbl-dot"></div>
+        <span class="lbl-txt">Realita yang Perlu Kamu Tahu</span>
+      </div>
+      <h1>
+        Kamu Sudah Kerja Keras Bertahun-Tahun.
+        <span class="line-pain">Tapi Uangmu Masih Pergi ke Kantong Orang Lain.</span>
+      </h1>
+      <p class="hero-desc">
+        Setiap bulan kamu bayar kontrakan. Setiap bulan uang itu <strong>hilang tanpa meninggalkan apapun untukmu</strong> — bukan aset, bukan investasi, bukan warisan untuk anak-anakmu.
+        <br><br>Pertanyaannya: <strong>sudah berapa banyak yang sudah lenyap selama ini?</strong>
+      </p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hs-num">72%</span>
+          <span class="hs-lbl">Keluarga masih menyewa</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hs-num">Rp 18 Jt</span>
+          <span class="hs-lbl">Lenyap per tahun (estimasi)</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hs-num">0</span>
+          <span class="hs-lbl">Aset yang tersisa dari kontrakan</span>
+        </div>
+      </div>
+
+      <div class="hero-ctas">
+        <button class="btn btn-pain btn-lg" onclick="scrollToCalc()">
+          🧮 Hitung Berapa yang Sudah Lenyap
+        </button>
+        <button class="btn btn-ghost-w" onclick="scrollToCalc()">
+          Saya Ingin Tahu Dulu
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint" onclick="scrollToCalc()" role="button" aria-label="Scroll ke kalkulator">
+    <span>Hitung Sekarang</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- ================================
+     INTERACTIVE CALCULATOR
+     ================================ -->
+<section id="calc">
+  <div class="wrap">
+    <div class="calc-card rv">
+      <div class="calc-intro">
+        <span class="tag tag-pain">Kalkulator Jujur</span>
+        <h2>Hitung Berapa Uangmu yang<br>Sudah Lenyap ke Kontrakan</h2>
+        <p>Geser slider di bawah sesuai kondisimu. Hasilnya mungkin akan mengejutkanmu — dan itu memang tujuannya.</p>
+      </div>
+
+      <div class="calc-inputs">
+        <!-- Input 1: Years renting -->
+        <div class="ci-group">
+          <label>Sudah berapa lama kamu ngontrak? <span id="yr-disp">5 Tahun</span></label>
+          <div class="slider-wrap">
+            <input type="range" id="yr-slider" min="1" max="20" value="5" oninput="updateCalc()">
+          </div>
+          <p style="font-size:0.76rem;color:var(--muted);margin-top:6px">Geser: 1 tahun — 20 tahun</p>
+        </div>
+
+        <!-- Input 2: Monthly rent -->
+        <div class="ci-group">
+          <label>Biaya kontrak/kontrakan per bulan:</label>
+          <div class="rent-btns">
+            <button class="rb" onclick="setRent(750000,this)">Rp 750 rb</button>
+            <button class="rb active" onclick="setRent(1500000,this)">Rp 1,5 jt</button>
+            <button class="rb" onclick="setRent(2000000,this)">Rp 2 jt</button>
+            <button class="rb" onclick="setRent(2500000,this)">Rp 2,5 jt</button>
+            <button class="rb" onclick="setRent(3000000,this)">Rp 3 jt</button>
+          </div>
+          <p style="font-size:0.76rem;color:var(--muted)">Pilih yang paling mendekati kondisimu</p>
+        </div>
+      </div>
+
+      <!-- RESULT -->
+      <div class="calc-result">
+        <div class="cr-label">Total Uang yang Sudah Lenyap ke Kantong Orang Lain</div>
+        <div class="cr-amount" id="cr-amount">Rp 90.000.000</div>
+        <div class="cr-sub" id="cr-sub">dari 5 tahun ngontrak Rp 1.500.000/bulan</div>
+        <div class="cr-breakdown">
+          <div class="cr-bd-item">
+            <span class="cr-bd-num" id="cr-yr">Rp 18 jt</span>
+            <span class="cr-bd-lbl">Per tahun hilang</span>
+          </div>
+          <div class="cr-divider"></div>
+          <div class="cr-bd-item">
+            <span class="cr-bd-num" id="cr-day">Rp 49 rb</span>
+            <span class="cr-bd-lbl">Per hari hilang</span>
+          </div>
+          <div class="cr-divider"></div>
+          <div class="cr-bd-item">
+            <span class="cr-bd-num" id="cr-next">+ Rp 18 jt</span>
+            <span class="cr-bd-lbl">Akan hilang tahun depan</span>
+          </div>
+        </div>
+        <div class="cr-msg" id="cr-msg">
+          Dalam <strong id="cr-msg-yr">5 tahun</strong>, uang sebesar itu sudah hilang — tanpa meninggalkan <strong>satu sen pun</strong> sebagai aset, tabungan, atau sesuatu yang bisa diwariskan ke anak-anakmu.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     PAIN 1 — KONTRAKAN VS CICILAN
+     ================================ -->
+<section id="compare-money">
+  <div class="wrap">
+    <div class="tc rv">
+      <span class="tag tag-pain">Perbandingan Nyata</span>
+      <h2>Uang yang Sama. Tapi Hasilnya<br><span class="c-pain">Bisa Sangat Berbeda.</span></h2>
+      <p style="max-width:520px;margin:10px auto 0">Dengan jumlah uang yang hampir sama setiap bulannya, kamu sebenarnya punya dua pilihan yang hasilnya sangat jauh berbeda.</p>
+      <div class="div-line div-pain"></div>
+    </div>
+    <div class="cmp-grid">
+      <div class="cmp-col cmp-col-bad rv rv-l">
+        <span class="cmp-col-badge bad-badge">❌ Bayar Kontrakan</span>
+        <div class="cmp-title">Rp 1,5–3 Juta per Bulan</div>
+        <div class="cmp-items">
+          <div class="ci ci-bad"><div class="ci-ico">✗</div><span>Uang pergi ke kantong pemilik rumah, selamanya</span></div>
+          <div class="ci ci-bad"><div class="ci-ico">✗</div><span>Tidak membangun aset apapun atas namamu</span></div>
+          <div class="ci ci-bad"><div class="ci-ico">✗</div><span>Bisa diusir kapanpun kontrak habis</span></div>
+          <div class="ci ci-bad"><div class="ci-ico">✗</div><span>Harga kontrakan naik setiap tahun</span></div>
+          <div class="ci ci-bad"><div class="ci-ico">✗</div><span>Tidak ada yang bisa diwariskan ke anak</span></div>
+          <div class="ci ci-bad"><div class="ci-ico">✗</div><span>Setelah 20 tahun: tidak punya apa-apa</span></div>
+        </div>
+      </div>
+      <div class="cmp-col cmp-col-good rv rv-r">
+        <span class="cmp-col-badge good-badge">✅ Cicilan KPR Rumah Sendiri</span>
+        <div class="cmp-title">Rp 3 Jutaan per Bulan (Flat)</div>
+        <div class="cmp-items">
+          <div class="ci ci-good"><div class="ci-ico">✓</div><span>Setiap cicilan membangun aset milikmu sendiri</span></div>
+          <div class="ci ci-good"><div class="ci-ico">✓</div><span>Kepemilikan makin kuat setiap bulannya</span></div>
+          <div class="ci ci-good"><div class="ci-ico">✓</div><span>Tidak ada yang bisa mengusirmu dari rumah sendiri</span></div>
+          <div class="ci ci-good"><div class="ci-ico">✓</div><span>Cicilan flat — tidak naik sampai lunas</span></div>
+          <div class="ci ci-good"><div class="ci-ico">✓</div><span>Rumah bisa diwariskan ke anak-cucumu</span></div>
+          <div class="ci ci-good"><div class="ci-ico">✓</div><span>Setelah 20 tahun: punya rumah senilai ratusan juta</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="cmp-same rv">
+      <p>Selisih biaya bulanannya? <strong>Hampir sama. Bahkan bisa lebih murah.</strong><br>Yang berbeda hanya ke mana uang itu pergi setiap bulannya.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     PAIN 2 — HARGA PROPERTI NAIK
+     ================================ -->
+<section id="price-growth">
+  <div class="wrap">
+    <div class="tc rv">
+      <span class="tag tag-dark">Fakta yang Sering Diabaikan</span>
+      <h2 class="c-white">Setiap Tahun yang Kamu Tunda,<br><span style="color:var(--pain-light)">Harga Makin Jauh dari Jangkauan</span></h2>
+      <p style="color:rgba(255,255,255,0.62);max-width:520px;margin:10px auto 0">Harga properti di koridor Surabaya–Mojokerto–Gresik terus naik dari tahun ke tahun. Yang beli 3 tahun lalu sudah untung besar. Yang masih menunggu — semakin ketinggalan.</p>
+      <div class="div-line div-pain"></div>
+    </div>
+
+    <div class="pg-chart-wrap rv" id="pg-chart">
+      <div class="pg-bars" id="pg-bars">
+        <!-- Bars injected by JS -->
+      </div>
+      <div class="pg-legend">
+        <div class="pg-legend-item"><div class="pg-legend-dot" style="background:#3A7A58"></div><span>Harga properti (ilustrasi)</span></div>
+        <div class="pg-legend-item"><div class="pg-legend-dot" style="background:var(--pain-light)"></div><span>Tahun ini</span></div>
+      </div>
+      <div class="pg-insight">
+        <p>Properti yang tahun 2020 harganya Rp 280 jutaan, hari ini sudah di angka Rp 395 jutaan ke atas — naik lebih dari <strong>40% dalam 5 tahun</strong>. Setiap tahun menunda = selisih yang makin besar antara kemampuan finansialmu dan harga pasar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     PAIN 3 — THE ENDLESS CYCLE
+     ================================ -->
+<section id="the-cycle">
+  <div class="wrap">
+    <div class="tc rv">
+      <span class="tag tag-pain">Siklus yang Terus Berulang</span>
+      <h2>Kapan Lingkaran Ini<br><span class="c-pain">Akan Berhenti?</span></h2>
+      <p style="max-width:500px;margin:10px auto 0">Tanpa perubahan keputusan, siklus ini akan terus berputar — bulan demi bulan, tahun demi tahun, tanpa ada titik akhir yang jelas.</p>
+    </div>
+    <div class="cycle-wrap rv">
+      <div class="cycle-steps">
+        <div class="cycle-step">
+          <div class="cs-ico" style="border-color:rgba(27,61,47,0.20)">💼</div>
+          <div class="cs-label">Kerja Keras Tiap Bulan</div>
+        </div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-step">
+          <div class="cs-ico" style="border-color:rgba(27,61,47,0.20)">💰</div>
+          <div class="cs-label">Gaji Masuk</div>
+        </div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-step">
+          <div class="cs-ico" style="border-color:rgba(184,50,32,0.30)">🏚️</div>
+          <div class="cs-label">Bayar Kontrakan</div>
+        </div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-step">
+          <div class="cs-ico" style="border-color:rgba(184,50,32,0.30)">😔</div>
+          <div class="cs-label">Gaji Habis</div>
+        </div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-step">
+          <div class="cs-ico" style="border-color:rgba(184,50,32,0.50)">🔄</div>
+          <div class="cs-label">Ulangi Bulan Depan</div>
+        </div>
+      </div>
+      <div class="cycle-closing">
+        <p>Tanpa ada perubahan keputusan,<br>siklus ini tidak akan berhenti sendiri.</p>
+        <em>Sementara di luar sana, harga properti terus naik setiap tahunnya.</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     AGITATION — 5 YEARS LATER
+     ================================ -->
+<section id="agitation">
+  <div class="wrap">
+    <div class="tc agi-intro rv">
+      <span class="tag tag-dark">Bayangkan 5 Tahun Lagi</span>
+      <h2 class="c-white">Dua Jalan yang Hasilnya<br><span style="color:var(--gold-light)">Sangat Berbeda</span></h2>
+      <p>Pilihan yang kamu buat hari ini — apakah tetap menunggu atau mulai bertindak — akan menentukan seperti apa hidupmu 5 tahun ke depan.</p>
+    </div>
+    <div class="agi-grid">
+      <!-- Path A: Terus menunda -->
+      <div class="agi-col agi-bad rv rv-l">
+        <div class="agi-col-title">😔 Kalau Terus Menunda…</div>
+        <div class="agi-timeline">
+          <div class="at-item">
+            <div class="at-dot bad-dot">'25</div>
+            <div>
+              <span class="at-year">Sekarang (2025)</span>
+              <div class="at-desc">Masih ngontrak, bilang "nanti dulu, belum siap"</div>
+            </div>
+          </div>
+          <div class="at-item">
+            <div class="at-dot bad-dot">'26</div>
+            <div>
+              <span class="at-year">2026</span>
+              <div class="at-desc">Harga kontrakan naik 10%. Harga properti naik 8–12%. Selisih makin jauh.</div>
+            </div>
+          </div>
+          <div class="at-item">
+            <div class="at-dot bad-dot">'27</div>
+            <div>
+              <span class="at-year">2027</span>
+              <div class="at-desc">Sudah habiskan Rp 36–72 juta lagi untuk kontrakan orang lain</div>
+            </div>
+          </div>
+          <div class="at-item">
+            <div class="at-dot bad-dot">'29</div>
+            <div>
+              <span class="at-year">2029</span>
+              <div class="at-desc">Harga properti yang sekarang Rp 395 juta sudah menjadi Rp 500–550 juta. Makin jauh dari jangkauan.</div>
+            </div>
+          </div>
+          <div class="at-item">
+            <div class="at-dot bad-dot">'30</div>
+            <div>
+              <span class="at-year">2030</span>
+              <div class="at-desc">Sudah 10 tahun ngontrak. Lebih dari Rp 100–200 juta sudah hilang. Masih belum punya rumah sendiri.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Path B: Bertindak sekarang -->
+      <div class="agi-col agi-good rv rv-r">
+        <div class="agi-col-title">✨ Kalau Mulai Bertindak Sekarang…</div>
+        <div class="agi-timeline">
+          <div class="at-item">
+            <div class="at-dot good-dot">'25</div>
+            <div>
+              <span class="at-year">Sekarang (2025)</span>
+              <div class="at-desc">Mulai proses, booking dengan nominal kecil, cicilan berjalan</div>
+            </div>
+          </div>
+          <div class="at-item">
+            <div class="at-dot good-dot">'26</div>
+            <div>
+              <span class="at-year">2026</span>
+              <div class="at-desc">Cicilan sudah berjalan 1 tahun, bagian dari rumah sudah jadi milikmu</div>
+            </div>
+          </div>
+          <div class="at-item">
+            <div class="at-dot good-dot">'27</div>
+            <div>
+              <span class="at-year">2027</span>
+              <div class="at-desc">Nilai properti naik, asetmu sudah lebih mahal dari harga belinya</div>
+            </div>
+          </div>
+          <div class="at-item">
+            <div class="at-dot good-dot">'29</div>
+            <div>
+              <span class="at-year">2029</span>
+              <div class="at-desc">Sudah 4 tahun punya rumah sendiri. Cicilan flat, tidak berubah sejak hari pertama.</div>
+            </div>
+          </div>
+          <div class="at-item">
+            <div class="at-dot good-dot">'30</div>
+            <div>
+              <span class="at-year">2030</span>
+              <div class="at-desc">Rumah sudah naik nilai, bisa dijadikan agunan atau investasi. Kamu sudah selangkah lebih maju.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     EDUCATION — 3 MISCONCEPTIONS
+     ================================ -->
+<section id="edu">
+  <div class="wrap">
+    <div class="tc edu-intro rv">
+      <span class="tag tag-hope">Edukasi — Penting Dibaca</span>
+      <h2>Ini Bukan Salahmu.<br><span class="c-hope">Tapi Ada 3 Hal yang Perlu Diluruskan.</span></h2>
+      <p>Banyak orang tidak membeli rumah bukan karena tidak mampu — tapi karena mempercayai hal-hal yang sebenarnya tidak lagi akurat. Klik masing-masing untuk baca faktanya.</p>
+      <div class="div-line div-hope"></div>
+    </div>
+
+    <div class="edu-cards">
+      <!-- Misconception 1 -->
+      <div class="edu-card rv" onclick="toggleEdu(this)">
+        <div class="edu-card-head">
+          <div class="edu-num">1</div>
+          <div class="edu-myth">
+            <div class="edu-myth-label">Anggapan Umum</div>
+            <div class="edu-myth-text">"Beli rumah itu harus punya DP besar dulu — minimal 20–30% dari harga rumah."</div>
+          </div>
+          <div class="edu-toggle">+</div>
+        </div>
+        <div class="edu-fact">
+          <div class="edu-fact-label">✅ Faktanya</div>
+          <div class="edu-fact-text">Di banyak skema KPR saat ini, terutama dengan developer yang memang menyediakan fasilitas ini, uang muka bisa dimulai dari nol rupiah. Yang kamu butuhkan hanya booking fee yang jauh lebih kecil — bisa mulai dari Rp 1 juta. Anggapan "harus punya DP besar dulu" sudah tidak relevan untuk semua kondisi.</div>
+        </div>
+      </div>
+
+      <!-- Misconception 2 -->
+      <div class="edu-card rv d1" onclick="toggleEdu(this)">
+        <div class="edu-card-head">
+          <div class="edu-num">2</div>
+          <div class="edu-myth">
+            <div class="edu-myth-label">Anggapan Umum</div>
+            <div class="edu-myth-text">"Proses KPR itu ribet, banyak dokumen, dan sering ditolak bank — tidak worth the hassle."</div>
+          </div>
+          <div class="edu-toggle">+</div>
+        </div>
+        <div class="edu-fact">
+          <div class="edu-fact-label">✅ Faktanya</div>
+          <div class="edu-fact-text">Kerumitan proses KPR sangat bergantung pada siapa yang memandumu. Developer berpengalaman biasanya punya tim yang mendampingi pembeli dari awal sampai akad selesai — mulai dari pengecekan kelayakan, persiapan dokumen, hingga pengajuan ke bank. Kalau kamu didampingi dengan benar, prosesnya jauh lebih sederhana dari yang kamu bayangkan.</div>
+        </div>
+      </div>
+
+      <!-- Misconception 3 -->
+      <div class="edu-card rv d2" onclick="toggleEdu(this)">
+        <div class="edu-card-head">
+          <div class="edu-num">3</div>
+          <div class="edu-myth">
+            <div class="edu-myth-label">Anggapan Umum</div>
+            <div class="edu-myth-text">"Harga rumah yang layak sudah terlalu mahal untuk kondisi keuanganku saat ini."</div>
+          </div>
+          <div class="edu-toggle">+</div>
+        </div>
+        <div class="edu-fact">
+          <div class="edu-fact-label">✅ Faktanya</div>
+          <div class="edu-fact-text">Harga rumah bergantung banyak pada lokasinya. Di luar pusat kota besar seperti Surabaya, tapi masih dalam jangkauan yang wajar, ada pilihan properti dengan cicilan yang sebenarnya bisa bersaing — bahkan lebih murah — dari biaya sewa bulanan yang kamu bayarkan sekarang. Persoalannya bukan soal kemampuan, tapi soal informasi yang belum kamu akses.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     SOFT PROOF STRIP
+     ================================ -->
+<section id="proof-strip">
+  <div class="wrap">
+    <div class="proof-inner rv">
+      <div class="pf-item">
+        <span class="pf-ico">🏠</span>
+        <div>
+          <span class="pf-num">Rp 395 Jt</span>
+          <span class="pf-lbl">Harga mulai, cicilan flat</span>
+        </div>
+      </div>
+      <div class="pf-sep"></div>
+      <div class="pf-item">
+        <span class="pf-ico">📋</span>
+        <div>
+          <span class="pf-num">Rp 0</span>
+          <span class="pf-lbl">DP & biaya akad</span>
+        </div>
+      </div>
+      <div class="pf-sep"></div>
+      <div class="pf-item">
+        <span class="pf-ico">🔑</span>
+        <div>
+          <span class="pf-num">Rp 1 Jt</span>
+          <span class="pf-lbl">Booking untuk mulai proses</span>
+        </div>
+      </div>
+      <div class="pf-sep"></div>
+      <div class="pf-item">
+        <span class="pf-ico">📍</span>
+        <div>
+          <span class="pf-num">55 Mnt</span>
+          <span class="pf-lbl">Dari Surabaya via tol</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================
+     SOFT TEASE — BRIDGE TO MOFU
+     ================================ -->
+<section id="tease">
+  <div class="wrap">
+    <div class="tease-body rv">
+      <span class="tag tag-gold">Ada yang Perlu Kamu Tahu</span>
+      <h2 class="c-white" style="margin-top:12px">
+        Di Koridor Mojokerto–Gresik,<br>
+        <span class="c-gold">Ada Satu Pilihan yang Kebanyakan Orang Belum Tahu</span>
+      </h2>
+      <p>Bukan solusi ajaib. Bukan janji kosong. Hanya pilihan nyata yang sesuai dengan semua yang sudah kamu baca di atas — dan informasinya sudah kami siapkan lengkap untuk kamu pelajari.</p>
+
+      <div class="tease-points">
+        <div class="tp">
+          <span class="tp-ico">💡</span>
+          <div class="tp-txt">
+            <strong>Cicilan yang bisa bersaing dengan biaya kontrakan</strong>
+            Flat sampai lunas. Tidak naik. Tidak mengejutkan.
+          </div>
+        </div>
+        <div class="tp">
+          <span class="tp-ico">📄</span>
+          <div class="tp-txt">
+            <strong>Proses yang didampingi dari awal sampai akhir</strong>
+            Tidak perlu pusing sendiri mengurus dokumen dan bank.
+          </div>
+        </div>
+        <div class="tp">
+          <span class="tp-ico">🎯</span>
+          <div class="tp-txt">
+            <strong>Lokasi strategis — 50 menit dari Surabaya, semua fasilitas tersedia</strong>
+            SD, pasar, klinik, Indomaret — semuanya ada di sekitar lokasi.
+          </div>
+        </div>
+      </div>
+
+      <div class="tease-cta-group">
+        <button class="btn btn-gold btn-lg" onclick="goMofu('main_cta')">
+          🏠 Pelajari Informasinya Sekarang
+        </button>
+        <button class="btn btn-ghost-w" onclick="goMofu('secondary_cta')">
+          Lihat Detail Lengkapnya →
+        </button>
+      </div>
+      <div class="tease-note">Gratis · Tanpa tekanan · Tanpa syarat</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="foot">
+  <p>Informasi ini disajikan untuk tujuan edukasi bagi masyarakat di koridor Surabaya · Mojokerto · Gresik</p>
+  <p style="margin-top:5px">Data harga dan estimasi bersifat ilustrasi · Angka aktual dapat berbeda sesuai kondisi masing-masing individu</p>
+</footer>
+
+<!-- STICKY CTA -->
+<div id="sticky" aria-label="Tombol aksi cepat">
+  <button class="st-btn" onclick="goMofu('sticky_cta')">
+    <div class="st-pulse"></div>
+    🏠 Pelajari Solusinya
+  </button>
+</div>
+
+<!-- ================================
+     SCRIPTS
+     ================================ -->
+<script>
+/* =====================
+   MOFU REDIRECT + PIXEL
+   ===================== */
+function goMofu(src){
+  if(typeof fbq!=='undefined'){
+    fbq('track','Lead',{
+      content_name:'TOFU to MOFU Redirect',
+      content_category:src,
+      currency:'IDR'
+    });
+  }
+  window.location.href='akhtara-residence-mofu.html';
+}
+
+/* =====================
+   CALCULATOR
+   ===================== */
+var rentVal=1500000;
+
+function setRent(v,el){
+  rentVal=v;
+  document.querySelectorAll('.rb').forEach(function(b){b.classList.remove('active')});
+  el.classList.add('active');
+  updateCalc();
+}
+
+function fmtRp(n){
+  if(n>=1000000000)return'Rp '+Math.round(n/1000000000*10)/10+' M';
+  if(n>=1000000)return'Rp '+(n/1000000).toLocaleString('id-ID')+'jt';
+  return'Rp '+n.toLocaleString('id-ID');
+}
+
+function fmtRpFull(n){
+  return'Rp '+n.toLocaleString('id-ID');
+}
+
+function updateCalc(){
+  var yr=parseInt(document.getElementById('yr-slider').value)||5;
+  document.getElementById('yr-disp').textContent=yr+' Tahun';
+
+  var total=yr*12*rentVal;
+  var perYr=12*rentVal;
+  var perDay=Math.round(rentVal/30);
+  var nextYr=perYr;
+
+  /* animate amount */
+  animateNum('cr-amount',total);
+
+  document.getElementById('cr-sub').textContent=
+    'dari '+yr+' tahun ngontrak '+fmtRpFull(rentVal)+'/bulan';
+  document.getElementById('cr-yr').textContent=
+    fmtRp(perYr)+'/thn';
+  document.getElementById('cr-day').textContent=
+    'Rp '+perDay.toLocaleString('id-ID')+'/hari';
+  document.getElementById('cr-next').textContent=
+    '+ '+fmtRp(nextYr);
+  document.getElementById('cr-msg-yr').textContent=yr+' tahun';
+}
+
+var animT=null;
+function animateNum(id,target){
+  var el=document.getElementById(id);
+  if(!el)return;
+  if(animT)clearInterval(animT);
+  var start=0;
+  var step=Math.ceil(target/40);
+  animT=setInterval(function(){
+    start+=step;
+    if(start>=target){start=target;clearInterval(animT);}
+    el.textContent='Rp '+start.toLocaleString('id-ID');
+  },20);
+}
+
+updateCalc();
+
+/* =====================
+   PRICE GROWTH CHART
+   ===================== */
+(function(){
+  var data=[
+    {yr:'2020',val:280,color:'#2A5C42'},
+    {yr:'2021',val:305,color:'#3A7A58'},
+    {yr:'2022',val:330,color:'#4A9A70'},
+    {yr:'2023',val:355,color:'#8B6914'},
+    {yr:'2024',val:375,color:'#B8820A'},
+    {yr:'2025',val:395,color:'#B83220'}
+  ];
+  var maxVal=420;
+  var container=document.getElementById('pg-bars');
+  if(!container)return;
+  var h=200;
+  data.forEach(function(d){
+    var pct=(d.val/maxVal)*100;
+    var barH=Math.round((pct/100)*h);
+    var col=document.createElement('div');
+    col.className='pg-bar-col';
+    col.innerHTML=
+      '<div class="pg-bar" style="background:'+d.color+';height:'+barH+'px">'+
+        '<span class="pg-bar-price">Rp '+d.val+' jt</span>'+
+      '</div>'+
+      '<span class="pg-bar-year">'+d.yr+'</span>';
+    container.appendChild(col);
+  });
+})();
+
+/* =====================
+   FAQ ACCORDION — EDUCATION
+   ===================== */
+function toggleEdu(card){
+  var fact=card.querySelector('.edu-fact');
+  var isOpen=card.classList.contains('open');
+  document.querySelectorAll('.edu-card.open').forEach(function(c){
+    c.classList.remove('open');
+    c.querySelector('.edu-fact').style.display='none';
+  });
+  if(!isOpen){
+    card.classList.add('open');
+    fact.style.display='block';
+  }
+}
+
+/* =====================
+   SCROLL REVEAL
+   ===================== */
+(function(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -32px 0px'});
+  document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(function(el){obs.observe(el);});
+})();
+
+/* =====================
+   STICKY CTA
+   ===================== */
+(function(){
+  var s=document.getElementById('sticky');
+  var h=document.getElementById('hero');
+  if(!s||!h)return;
+  var o=new IntersectionObserver(function(entries){
+    s.classList.toggle('show',!entries[0].isIntersecting);
+  },{threshold:0});
+  o.observe(h);
+})();
+
+/* =====================
+   SCROLL HELPER
+   ===================== */
+function scrollToCalc(){
+  var el=document.getElementById('calc');
+  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* =====================
+   PASSIVE LISTENERS (INP)
+   ===================== */
+document.addEventListener('touchstart',function(){},{passive:true});
+document.addEventListener('touchmove',function(){},{passive:true});
+</script>
+
+</body>
+</html>
