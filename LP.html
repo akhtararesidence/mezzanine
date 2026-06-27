@@ -980,6 +980,28 @@
 
 <script>
 (function(){
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyr1OA3pZfrGYNCE_JZRyc1RwBVKGobgSMty-EkYNoq1uiPpoVrWhb2VQHmtdzwvPWL/exec";
+
+  const params = new URLSearchParams(window.location.search);
+  
+  const TRACKING = {
+  
+      utm_source: params.get("utm_source") || "",
+  
+      utm_medium: params.get("utm_medium") || "",
+  
+      utm_campaign: params.get("utm_campaign") || "",
+  
+      utm_content: params.get("utm_content") || "",
+  
+      utm_term: params.get("utm_term") || "",
+  
+      fbclid: params.get("fbclid") || ""
+  
+  };
+  
+  const PAGE_ENTER_TIME = Date.now();
+  
   const WA_NODES = document.querySelectorAll('.js-wa-cta');
   const WA_NUMBERS = [
     {name:'Pak Zaid', phone:'6282294009151'},
@@ -999,6 +1021,38 @@
   function buildWaUrl(phone, message){
     return 'https://wa.me/' + phone + '?text=' + encodeURIComponent(message);
   }
+
+  function getDevice(){
+
+    const ua = navigator.userAgent;
+
+    if(/Android/i.test(ua)) return "Android";
+
+    if(/iPhone|iPad|iPod/i.test(ua)) return "iPhone";
+
+    if(/Windows/i.test(ua)) return "Windows";
+
+    if(/Mac/i.test(ua)) return "Mac";
+
+    return "Unknown";
+
+    }
+    
+    function getBrowser(){
+    
+        const ua = navigator.userAgent;
+    
+        if(ua.indexOf("Edg")>-1) return "Edge";
+    
+        if(ua.indexOf("Chrome")>-1) return "Chrome";
+    
+        if(ua.indexOf("Firefox")>-1) return "Firefox";
+    
+        if(ua.indexOf("Safari")>-1) return "Safari";
+    
+        return "Unknown";
+    
+    }
 
   function trackPurchaseProxy(ctaName){
     if (typeof fbq === 'function') {
@@ -1029,8 +1083,36 @@
       const msg = baseMsg + '\n\nMohon dibantu oleh ' + recipient.name + '.';
       const url = buildWaUrl(recipient.phone, msg);
 
+      // Kirim data ke Google Spreadsheet
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          datetime: new Date().toISOString(),
+      
+          utm_source: TRACKING.utm_source,
+          utm_medium: TRACKING.utm_medium,
+          utm_campaign: TRACKING.utm_campaign,
+          utm_content: TRACKING.utm_content,
+          fbclid: TRACKING.fbclid,
+      
+          cta: ctaName,
+          admin: recipient.name,
+          phone: recipient.phone,
+      
+          page: window.location.href,
+      
+          useragent: navigator.userAgent
+        })
+      });
+      
+      // Pixel tetap jalan
       trackPurchaseProxy(ctaName);
-
+      
+      // Buka WhatsApp
       window.open(url, '_blank', 'noopener,noreferrer');
     }, { passive: false });
   });
