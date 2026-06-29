@@ -9,14 +9,27 @@
 <!-- Preconnect -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://images.unsplash.com">
 
-<!-- Preload hero image (LCP) -->
-<link rel="preload" as="image" href="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=85&auto=format&fit=crop" fetchpriority="high">
+<!-- Preload Hero Image (LCP) -->
+<link
+    rel="preload"
+    as="image"
+    href="ar-renderfoto.avif"
+    fetchpriority="high">
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Google Fonts (non render-blocking) -->
+<link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Inter:wght@400;700&display=swap"
+    onload="this.onload=null;this.rel='stylesheet'">
 
+<noscript>
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&family=Inter:wght@400;700&display=swap">
+</noscript>
+   
 <!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
@@ -396,7 +409,7 @@ thead .col-ak{background:linear-gradient(135deg,rgba(200,168,75,0.24),rgba(200,1
      ============================== -->
 <section id="hero">
   <img
-    src="mezzanine-main/ar-renderfoto.jpeg"
+    src="ar-renderfoto.avif"
     alt="Akhtara Residence — Eksterior Scandinavian"
     class="hero-img"
     width="1400" height="933"
