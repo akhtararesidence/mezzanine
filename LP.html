@@ -14,17 +14,22 @@
 <!-- Preload hero image LCP -->
 <link rel="preload" as="image" href="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1400&q=85&auto=format&fit=crop" fetchpriority="high">
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- Fonts: non-blocking via preload+onload (eliminates render-blocking ~750ms) -->
+<!-- Weights trimmed: PJS 600,700,800,900 | Inter 400,500 only -->
+<link rel="preload" as="style"
+  href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Inter:wght@400;500&display=swap"
+  onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Inter:wght@400;500&display=swap">
+</noscript>
 
-<!-- Meta Pixel -->
-<script>
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','YOUR_PIXEL_ID');
-fbq('track','PageView');
-fbq('track','ViewContent',{content_name:'Akhtara Residence TOFU LP',content_category:'Problem Awareness Properti',content_ids:['tofu-kontrakan-calculator'],content_type:'article',currency:'IDR'});
-</script>
+<!-- Meta Pixel: tiny stub only (zero network, zero blocking) -->
+<!-- fbevents.js (97 KiB) loaded after window.load — lihat script di bawah body -->
+<script>window._fbq=window.fbq=function(){(window.fbq.q=window.fbq.q||[]).push(arguments)};window.fbq.q=[];window.fbq.version='2.0';</script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+<!-- DNS prefetch pixel CDN agar koneksi lebih cepat saat waktunya load -->
+<link rel="dns-prefetch" href="https://connect.facebook.net">
 
 <style>
 /* =====================
@@ -70,7 +75,7 @@ input[type=range]{-webkit-appearance:none;appearance:none}
 /* =====================
    TYPOGRAPHY
    ===================== */
-h1,h2,h3,h4{font-family:'Plus Jakarta Sans',sans-serif;line-height:1.18;letter-spacing:-0.025em}
+h1,h2,h3,h4{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;line-height:1.18;letter-spacing:-0.025em}
 h1{font-size:clamp(1.9rem,5.5vw,3.2rem);font-weight:900}
 h2{font-size:clamp(1.45rem,4vw,2.2rem);font-weight:800}
 h3{font-size:clamp(1.05rem,2.5vw,1.3rem);font-weight:700}
@@ -921,7 +926,7 @@ function goMofu(src){
       currency:'IDR'
     });
   }
-  window.location.href='https://akhtararesidence.github.io/mezzanine/LP_2.html';
+  window.location.href='LP_2.html';
 }
 
 /* =====================
@@ -973,20 +978,31 @@ var animT=null;
 function animateNum(id,target){
   var el=document.getElementById(id);
   if(!el)return;
-  if(animT)clearInterval(animT);
+  if(animT)cancelAnimationFrame(animT);
   var start=0;
-  var step=Math.ceil(target/40);
-  animT=setInterval(function(){
-    start+=step;
-    if(start>=target){start=target;clearInterval(animT);}
-    el.textContent='Rp '+start.toLocaleString('id-ID');
-  },20);
+  var duration=600;
+  var startTime=null;
+  function step(ts){
+    if(!startTime)startTime=ts;
+    var progress=Math.min((ts-startTime)/duration,1);
+    /* easeOutQuart */
+    var ease=1-Math.pow(1-progress,4);
+    var current=Math.round(ease*target);
+    el.textContent='Rp '+current.toLocaleString('id-ID');
+    if(progress<1)animT=requestAnimationFrame(step);
+  }
+  animT=requestAnimationFrame(step);
 }
 
-updateCalc();
+/* Init calculator setelah DOM ready — prevents forced layout during parse */
+if(document.readyState==='loading'){
+  document.addEventListener('DOMContentLoaded',updateCalc);
+}else{
+  updateCalc();
+}
 
 /* =====================
-   PRICE GROWTH CHART
+   PRICE GROWTH CHART — rAF batches DOM writes, prevents forced reflow
    ===================== */
 (function(){
   var data=[
@@ -1001,6 +1017,8 @@ updateCalc();
   var container=document.getElementById('pg-bars');
   if(!container)return;
   var h=200;
+  /* Build fragment off-DOM first, then single append — zero forced reflow */
+  var frag=document.createDocumentFragment();
   data.forEach(function(d){
     var pct=(d.val/maxVal)*100;
     var barH=Math.round((pct/100)*h);
@@ -1011,8 +1029,10 @@ updateCalc();
         '<span class="pg-bar-price">Rp '+d.val+' jt</span>'+
       '</div>'+
       '<span class="pg-bar-year">'+d.yr+'</span>';
-    container.appendChild(col);
+    frag.appendChild(col);
   });
+  /* Single rAF: browser schedules write after layout is settled */
+  window.requestAnimationFrame(function(){container.appendChild(frag);});
 })();
 
 /* =====================
@@ -1069,6 +1089,30 @@ function scrollToCalc(){
    ===================== */
 document.addEventListener('touchstart',function(){},{passive:true});
 document.addEventListener('touchmove',function(){},{passive:true});
+
+/* =====================
+   DEFERRED PIXEL LOAD
+   Fbevents.js (97 KiB) dimuat setelah window.load agar tidak
+   memblokir FCP/LCP. Panggilan fbq() sebelumnya ter-queue otomatis
+   di stub head, dan di-replay saat fbevents.js selesai load.
+   ===================== */
+window.addEventListener('load',function(){
+  var s=document.createElement('script');
+  s.async=1;
+  s.src='https://connect.facebook.net/en_US/fbevents.js';
+  document.head.appendChild(s);
+  s.onload=function(){
+    fbq('init','YOUR_PIXEL_ID');
+    fbq('track','PageView');
+    fbq('track','ViewContent',{
+      content_name:'Akhtara Residence TOFU LP',
+      content_category:'Problem Awareness Properti',
+      content_ids:['tofu-kontrakan-calculator'],
+      content_type:'article',
+      currency:'IDR'
+    });
+  };
+},{once:true});
 </script>
 
 </body>
