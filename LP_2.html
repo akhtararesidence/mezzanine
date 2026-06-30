@@ -1059,6 +1059,22 @@ thead .col-ak{background:linear-gradient(135deg,rgba(200,168,75,0.24),rgba(200,1
      ============================== -->
 <script>
 /* =============================
+   GOOGLE SHEET TRACKING
+   ============================= */
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyr1OA3pZfrGYNCE_JZRyc1RwBVKGobgSMty-EkYNoq1uiPpoVrWhb2VQHmtdzwvPWL/exec";
+
+const params = new URLSearchParams(window.location.search);
+
+const TRACKING = {
+    utm_source: params.get("utm_source") || "",
+    utm_medium: params.get("utm_medium") || "",
+    utm_campaign: params.get("utm_campaign") || "",
+    utm_content: params.get("utm_content") || "",
+    fbclid: params.get("fbclid") || ""
+};
+
+/* =============================
    WA ROTATOR — Round-Robin
    ============================= */
 var AG=[
@@ -1074,35 +1090,106 @@ function nextAg(){
   return a;
 }
 
-/* =============================
-   META PIXEL FIRE + WA OPEN
-   ============================= */
 function wa(src,msg){
+
   if(typeof fbq!=='undefined'){
+
     fbq('track','Lead',{
+
       content_name:'Akhtara Residence MOFU',
+
       content_category:src,
+
       currency:'IDR',
+
       value:395000000
+
     });
+
     if(src==='booking'){
+
       fbq('track','InitiateCheckout',{
+
         content_name:'Akhtara Residence Booking',
+
         num_items:1,
+
         currency:'IDR',
+
         value:1000000
+
       });
+
     }
+
     if(src==='schedule'){
+
       fbq('track','AddToCart',{
+
         content_name:'Akhtara Residence Schedule Visit',
+
         currency:'IDR',
+
         value:395000000
+
       });
+
     }
+
   }
-  var a=nextAg();
-  window.open('https://wa.me/'+a.p+'?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer');
+
+  var a = nextAg();
+
+  /* =============================
+     KIRIM KE GOOGLE SHEET
+     ============================= */
+
+  fetch(SCRIPT_URL,{
+
+      method:"POST",
+
+      mode:"no-cors",
+
+      headers:{
+
+          "Content-Type":"application/json"
+
+      },
+
+      body:JSON.stringify({
+
+          utm_source:TRACKING.utm_source,
+
+          utm_medium:TRACKING.utm_medium,
+
+          utm_campaign:TRACKING.utm_campaign,
+
+          utm_content:TRACKING.utm_content,
+
+          fbclid:TRACKING.fbclid,
+
+          cta:src,
+
+          admin:a.n,
+
+          phone:a.p,
+
+          page:window.location.href
+
+      })
+
+  });
+
+  window.open(
+
+      'https://wa.me/'+a.p+'?text='+encodeURIComponent(msg),
+
+      '_blank',
+
+      'noopener,noreferrer'
+
+  );
+
 }
 
 /* =============================
