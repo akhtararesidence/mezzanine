@@ -1058,11 +1058,16 @@ thead .col-ak{background:linear-gradient(135deg,rgba(200,168,75,0.24),rgba(200,1
      SCRIPTS
      ============================== -->
 <script>
+/* ==========================================================
+   AKHTARA RESIDENCE
+   WA ROTATOR + META PIXEL + GOOGLE SHEET TRACKING
+========================================================== */
+
 /* =============================
    GOOGLE SHEET TRACKING
-   ============================= */
+============================= */
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyr1OA3pZfrGYNCE_JZRyc1RwBVKGobgSMty-EkYNoq1uiPpoVrWhb2VQHmtdzwvPWL/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxatrHJkU1UM-Wixpdt4j3lc3F7jZP4tBxtNwMV_0z6erdX52TQ2QpRd2_aZ5aDx1xk/exec";
 
 const params = new URLSearchParams(window.location.search);
 
@@ -1075,190 +1080,343 @@ const TRACKING = {
 };
 
 /* =============================
-   WA ROTATOR — Round-Robin
-   ============================= */
-var AG=[
-  {n:'Pak Zaid',  p:'6282294009151'},
-  {n:'Pak Guntur',p:'6282245327354'},
-  {n:'Bu Ella',   p:'628113672396'}
+   WA ROTATOR
+============================= */
+
+const AGENTS = [
+    {
+        name: "Pak Zaid",
+        phone: "6282294009151"
+    },
+    {
+        name: "Pak Guntur",
+        phone: "6282245327354"
+    },
+    {
+        name: "Bu Ella",
+        phone: "628113672396"
+    }
 ];
-function nextAg(){
-  var i=0;
-  try{i=parseInt(localStorage.getItem('_wai')||'0');if(isNaN(i)||i<0||i>=AG.length)i=0;}catch(e){i=0;}
-  var a=AG[i];
-  try{localStorage.setItem('_wai',((i+1)%AG.length).toString());}catch(e){}
-  return a;
-}
 
-function wa(src,msg){
+const ROTATOR_KEY = "akhtara_wa_rotator_v1";
 
-  if(typeof fbq!=='undefined'){
+function nextAgent(){
 
-    fbq('track','Lead',{
+    let index = parseInt(localStorage.getItem(ROTATOR_KEY) || "0");
 
-      content_name:'Akhtara Residence MOFU',
+    if(isNaN(index)) index = 0;
 
-      content_category:src,
+    const agent = AGENTS[index];
 
-      currency:'IDR',
+    localStorage.setItem(
+        ROTATOR_KEY,
+        ((index + 1) % AGENTS.length).toString()
+    );
 
-      value:395000000
-
-    });
-
-    if(src==='booking'){
-
-      fbq('track','InitiateCheckout',{
-
-        content_name:'Akhtara Residence Booking',
-
-        num_items:1,
-
-        currency:'IDR',
-
-        value:1000000
-
-      });
-
-    }
-
-    if(src==='schedule'){
-
-      fbq('track','AddToCart',{
-
-        content_name:'Akhtara Residence Schedule Visit',
-
-        currency:'IDR',
-
-        value:395000000
-
-      });
-
-    }
-
-  }
-
-  var a = nextAg();
-
-  /* =============================
-     KIRIM KE GOOGLE SHEET
-     ============================= */
-
-  fetch(SCRIPT_URL,{
-
-      method:"POST",
-
-      mode:"no-cors",
-
-      headers:{
-
-          "Content-Type":"application/json"
-
-      },
-
-      body:JSON.stringify({
-
-          utm_source:TRACKING.utm_source,
-
-          utm_medium:TRACKING.utm_medium,
-
-          utm_campaign:TRACKING.utm_campaign,
-
-          utm_content:TRACKING.utm_content,
-
-          fbclid:TRACKING.fbclid,
-
-          cta:src,
-
-          admin:a.n,
-
-          phone:a.p,
-
-          page:window.location.href
-
-      })
-
-  });
-
-  window.open(
-
-      'https://wa.me/'+a.p+'?text='+encodeURIComponent(msg),
-
-      '_blank',
-
-      'noopener,noreferrer'
-
-  );
+    return agent;
 
 }
 
 /* =============================
-   COUNTDOWN TIMER
-   Deadline: 31 Juli 2026, 23:59:59
-   ============================= */
-var DEADLINE=new Date('2026-07-31T23:59:59');
-function pad(n){return String(n).padStart(2,'0');}
-function tick(){
-  var diff=DEADLINE-new Date();
-  if(diff<0)diff=0;
-  var d=Math.floor(diff/86400000);
-  var h=Math.floor((diff%86400000)/3600000);
-  var m=Math.floor((diff%3600000)/60000);
-  var s=Math.floor((diff%60000)/1000);
-  var vals=[pad(d),pad(h),pad(m),pad(s)];
-  var ids=[['h-d','h-h','h-m','h-s'],['f-d','f-h','f-m','f-s']];
-  ids.forEach(function(row){
-    row.forEach(function(id,k){
-      var el=document.getElementById(id);
-      if(el&&el.textContent!==vals[k])el.textContent=vals[k];
+   KIRIM DATA KE GOOGLE SHEET
+============================= */
+
+function sendTracking(data){
+
+    fetch(SCRIPT_URL,{
+
+        method:"POST",
+
+        mode:"no-cors",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify(data)
+
     });
-  });
+
 }
+
+/* =============================
+   WHATSAPP
+============================= */
+
+function wa(cta,message){
+
+    const agent = nextAgent();
+
+    /* ===== Pixel ===== */
+
+    if(typeof fbq==="function"){
+
+        fbq("track","Lead",{
+
+            content_name:"Akhtara Residence MOFU",
+
+            content_category:cta,
+
+            currency:"IDR",
+
+            value:395000000
+
+        });
+
+        if(cta==="booking"){
+
+            fbq("track","InitiateCheckout",{
+
+                content_name:"Akhtara Residence Booking",
+
+                currency:"IDR",
+
+                value:1000000,
+
+                num_items:1
+
+            });
+
+        }
+
+        if(cta==="schedule"){
+
+            fbq("track","AddToCart",{
+
+                content_name:"Akhtara Residence Schedule Visit",
+
+                currency:"IDR",
+
+                value:395000000
+
+            });
+
+        }
+
+    }
+
+    /* ===== Spreadsheet ===== */
+
+    sendTracking({
+
+        utm_source:TRACKING.utm_source,
+
+        utm_medium:TRACKING.utm_medium,
+
+        utm_campaign:TRACKING.utm_campaign,
+
+        utm_content:TRACKING.utm_content,
+
+        fbclid:TRACKING.fbclid,
+
+        cta:cta,
+
+        admin:agent.name,
+
+        phone:agent.phone,
+
+        page:location.href
+
+    });
+
+    /* ===== WhatsApp ===== */
+
+    const url =
+        "https://wa.me/" +
+        agent.phone +
+        "?text=" +
+        encodeURIComponent(message);
+
+    window.open(
+        url,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
+}
+
+/* =============================
+   COUNTDOWN
+============================= */
+
+const DEADLINE = new Date("2026-07-31T23:59:59");
+
+function pad(n){
+
+    return String(n).padStart(2,"0");
+
+}
+
+function tick(){
+
+    let diff = DEADLINE - new Date();
+
+    if(diff < 0) diff = 0;
+
+    const d = Math.floor(diff / 86400000);
+
+    const h = Math.floor((diff % 86400000)/3600000);
+
+    const m = Math.floor((diff % 3600000)/60000);
+
+    const s = Math.floor((diff % 60000)/1000);
+
+    const value = [
+
+        pad(d),
+
+        pad(h),
+
+        pad(m),
+
+        pad(s)
+
+    ];
+
+    [
+
+        ["h-d","h-h","h-m","h-s"],
+
+        ["f-d","f-h","f-m","f-s"]
+
+    ].forEach(function(group){
+
+        group.forEach(function(id,i){
+
+            const el = document.getElementById(id);
+
+            if(el){
+
+                el.textContent = value[i];
+
+            }
+
+        });
+
+    });
+
+}
+
 tick();
+
 setInterval(tick,1000);
 
 /* =============================
-   FAQ ACCORDION
-   ============================= */
+   FAQ
+============================= */
+
 function tog(btn){
-  var item=btn.closest('.faq-item');
-  var body=item.querySelector('.faq-body');
-  var isOpen=body.classList.contains('open');
-  document.querySelectorAll('.faq-body.open').forEach(function(b){b.classList.remove('open');});
-  document.querySelectorAll('.faq-q.open').forEach(function(b){b.classList.remove('open');});
-  if(!isOpen){body.classList.add('open');btn.classList.add('open');}
+
+    const item = btn.closest(".faq-item");
+
+    const body = item.querySelector(".faq-body");
+
+    const open = body.classList.contains("open");
+
+    document.querySelectorAll(".faq-body.open").forEach(function(el){
+
+        el.classList.remove("open");
+
+    });
+
+    document.querySelectorAll(".faq-q.open").forEach(function(el){
+
+        el.classList.remove("open");
+
+    });
+
+    if(!open){
+
+        body.classList.add("open");
+
+        btn.classList.add("open");
+
+    }
+
 }
 
 /* =============================
    SCROLL REVEAL
-   ============================= */
+============================= */
+
 (function(){
-  var obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}
+
+    const observer = new IntersectionObserver(function(entries){
+
+        entries.forEach(function(entry){
+
+            if(entry.isIntersecting){
+
+                entry.target.classList.add("vis");
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    },{
+
+        threshold:0.1,
+
+        rootMargin:"0px 0px -36px 0px"
+
     });
-  },{threshold:0.1,rootMargin:'0px 0px -36px 0px'});
-  document.querySelectorAll('.rev,.rev-l,.rev-r').forEach(function(el){obs.observe(el);});
+
+    document
+        .querySelectorAll(".rev,.rev-l,.rev-r")
+        .forEach(function(el){
+
+            observer.observe(el);
+
+        });
+
 })();
 
 /* =============================
-   STICKY CTA — appear after hero
-   ============================= */
+   STICKY CTA
+============================= */
+
 (function(){
-  var s=document.getElementById('sticky');
-  var h=document.getElementById('hero');
-  if(!s||!h)return;
-  var o=new IntersectionObserver(function(entries){
-    s.classList.toggle('show',!entries[0].isIntersecting);
-  },{threshold:0});
-  o.observe(h);
+
+    const sticky = document.getElementById("sticky");
+
+    const hero = document.getElementById("hero");
+
+    if(!sticky || !hero) return;
+
+    const observer = new IntersectionObserver(function(entries){
+
+        sticky.classList.toggle(
+
+            "show",
+
+            !entries[0].isIntersecting
+
+        );
+
+    });
+
+    observer.observe(hero);
+
 })();
 
 /* =============================
-   PASSIVE EVENT LISTENERS (INP)
-   ============================= */
-document.addEventListener('touchstart',function(){},{passive:true});
-document.addEventListener('touchmove',function(){},{passive:true});
+   PASSIVE EVENT
+============================= */
+
+document.addEventListener(
+    "touchstart",
+    function(){},
+    {passive:true}
+);
+
+document.addEventListener(
+    "touchmove",
+    function(){},
+    {passive:true}
+);
+
 </script>
 
 </body>
