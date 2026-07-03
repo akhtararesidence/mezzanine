@@ -475,6 +475,43 @@ body.expired > *:not(#expired-overlay){
     box-shadow:0 12px 28px rgba(34,197,94,.45);
 
 }
+
+.warning-text{
+
+    display:inline-block;
+
+    font-weight:800;
+
+    color:#fff;
+
+    background:#E53935;
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    animation:pulseWarning 1.2s infinite;
+
+}
+
+@keyframes pulseWarning{
+
+    0%{
+        transform:scale(1);
+        box-shadow:0 0 0 0 rgba(229,57,53,.6);
+    }
+
+    70%{
+        transform:scale(1.05);
+        box-shadow:0 0 0 12px rgba(229,57,53,0);
+    }
+
+    100%{
+        transform:scale(1);
+        box-shadow:0 0 0 0 rgba(229,57,53,0);
+    }
+
+}
 /* ============================
    STICKY CTA
    ============================ */
@@ -1411,14 +1448,22 @@ function lockLandingPage(){
             <p>
                 Anda telah melewatkan promo yang tersedia khusus selama 3 hari.
                 <br><br>
-                Sekarang jangan lewatkan kesempatan untuk mendapatkan promo terbaru. 
-                Hubungi Admin dan cek penawaran terbaik yang bisa Anda dapatkan.
+            
+                <span class="warning-text">
+                    ⚠️ SEKARANG JANGAN LEWATKAN LAGI!
+                </span>
+            
+                <br><br>
+            
+                Kesempatan untuk mendapatkan promo terbaru masih terbuka.
+                Hubungi Admin sekarang dan cek penawaran terbaik yang bisa Anda dapatkan.
             </p>
 
             <button
                 class="expired-btn"
-                onclick="expiredPromoCTA()"
+                onclick="wa('expired_popup')"
             >
+                <i class="fab fa-whatsapp"></i>
                 Cek Promo Terbaru
             </button>
 
