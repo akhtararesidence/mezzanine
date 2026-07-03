@@ -365,6 +365,107 @@ thead .col-ak{background:linear-gradient(135deg,rgba(200,168,75,0.24),rgba(200,1
 
 .fca-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
 
+/* Baru countdown */    
+body.expired > *:not(#expired-overlay){
+
+    filter: blur(8px);
+
+    pointer-events:none;
+
+    user-select:none;
+
+}
+
+#expired-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.72);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999999;
+
+    padding:20px;
+
+}
+
+.expired-box{
+
+    background:#fff;
+
+    max-width:420px;
+
+    width:100%;
+
+    border-radius:18px;
+
+    padding:35px;
+
+    text-align:center;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+
+}
+
+.expired-icon{
+
+    font-size:54px;
+
+    margin-bottom:15px;
+
+}
+
+.expired-box h2{
+
+    margin-bottom:15px;
+
+}
+
+.expired-box p{
+
+    color:#555;
+
+    line-height:1.6;
+
+    margin-bottom:30px;
+
+}
+
+.expired-btn{
+
+    display:block;
+
+    width:100%;
+
+    background:#25D366;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:16px;
+
+    border-radius:10px;
+
+    font-weight:bold;
+
+    transition:.2s;
+
+}
+
+.expired-btn:hover{
+
+    opacity:.9;
+
+}
+
 /* ============================
    STICKY CTA
    ============================ */
@@ -448,9 +549,9 @@ thead .col-ak{background:linear-gradient(135deg,rgba(200,168,75,0.24),rgba(200,1
       </div>
 
       <div class="hero-price">
-        <span class="hp-lbl">Harga KPR</span>
-        <span class="hp-main">Rp 395 Juta</span>
-        <span class="hp-sub">Cash Rp 375 Juta &nbsp;·&nbsp; Booking hanya Rp 1 Juta</span>
+        <span class="hp-lbl">Harga KPR Mulai</span>
+        <span class="hp-main">Rp 300 Juta</span>
+        <span class="hp-sub">Cash Rp 280 Juta &nbsp;·&nbsp; Booking hanya Rp 1 Juta</span>
       </div>
 
       <div class="hero-ctas">
@@ -539,7 +640,7 @@ thead .col-ak{background:linear-gradient(135deg,rgba(200,168,75,0.24),rgba(200,1
           <div class="sol-icon">📊</div>
           <div class="sol-txt">
             <h4>Cicilan Flat — Tidak Naik Sampai Lunas</h4>
-            <p>Rp 3 jutaan/bulan selama 20 tahun, angkanya tetap. Kamu bisa rencanakan keuangan keluarga dengan tenang tanpa kejutan di kemudian hari.</p>
+            <p>Mulai Rp 2,8 juta/bulan selama 20 tahun, angkanya tetap. Kamu bisa rencanakan keuangan keluarga dengan tenang tanpa kejutan di kemudian hari.</p>
           </div>
         </div>
         <div class="sol-pt">
@@ -656,7 +757,7 @@ thead .col-ak{background:linear-gradient(135deg,rgba(200,168,75,0.24),rgba(200,1
       <div class="ben-card rev rev-d1">
         <div class="ben-ico">🏦</div>
         <h3>Cicilan Flat 20 Tahun</h3>
-        <p class="ben-feat">Angsuran Rp 3 jutaan/bulan, tidak berubah sampai lunas</p>
+        <p class="ben-feat">Angsuran mulai Rp 2,8 juta/bulan, tidak berubah sampai lunas</p>
         <p>Tidak ada kenaikan cicilan yang mengejutkan. Rencanakan keuangan keluarga dengan pasti untuk 10–20 tahun ke depan tanpa ada beban tak terduga.</p>
       </div>
       <div class="ben-card rev rev-d2">
@@ -819,7 +920,7 @@ thead .col-ak{background:linear-gradient(135deg,rgba(200,168,75,0.24),rgba(200,1
           <div><span class="loc-dest">TOL Belahanrejo</span><span class="loc-sub">Akses ke Surabaya, Mojokerto, Gresik lebih cepat</span></div>
         </div>
         <div class="loc-pt">
-          <span class="loc-time">50 menit</span>
+          <span class="loc-time">55 menit</span>
           <div><span class="loc-dest">Kota Surabaya</span><span class="loc-sub">Solusi nyata bagi pekerja Surabaya yang ingin punya rumah</span></div>
         </div>
       </div>
@@ -946,7 +1047,7 @@ thead .col-ak{background:linear-gradient(135deg,rgba(200,168,75,0.24),rgba(200,1
 
       <div class="faq-item rev">
         <button class="faq-q" onclick="tog(this)">
-          Cicilan Rp 3 jutaan itu pasti tidak naik sampai lunas?
+          Cicilan mulai Rp 2,8 juta itu pasti tidak naik sampai lunas?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-body">
@@ -1041,7 +1142,7 @@ thead .col-ak{background:linear-gradient(135deg,rgba(200,168,75,0.24),rgba(200,1
 
 <!-- FOOTER -->
 <footer id="footer">
-  <p>© 2025 Akhtara Residence &nbsp;·&nbsp; Jl. Raya Kedamean-Dawarblandong, Mojokerto, Jawa Timur</p>
+  <p>© 2026 Akhtara Residence &nbsp;·&nbsp; Jl. Raya Kedamean-Dawarblandong, Mojokerto, Jawa Timur</p>
   <p style="margin-top:5px">Harga dan promo dapat berubah sewaktu-waktu · KPR subject to bank approval · Gambar ilustrasi, dapat berbeda dari kondisi aktual</p>
 </footer>
 
@@ -1139,11 +1240,38 @@ function sendTracking(data){
 
 }
 
-/* =============================
-   WHATSAPP
-============================= */
+/* ==========================================
+   WHATSAPP MESSAGE TEMPLATE
+========================================== */
 
-function wa(cta,message){
+const WA_MESSAGES = {
+
+    default:
+        "Halo Admin, saya tertarik dengan Akhtara Residence.",
+
+    hero:
+        "Halo Admin, saya tertarik dengan Akhtara Residence.",
+
+    booking:
+        "Halo Admin, saya ingin booking unit Akhtara Residence.",
+
+    schedule:
+        "Halo Admin, saya ingin menjadwalkan survey lokasi.",
+
+    expired_popup:
+        "Halo Admin, promo di landing page saya sudah berakhir. Apakah masih ada promo terbaru?"
+
+};
+
+/* ==========================================
+   WHATSAPP
+========================================== */
+
+function wa(cta, message){
+
+    // Jika message tidak dikirim,
+    // ambil dari WA_MESSAGES sesuai CTA
+    message = message || WA_MESSAGES[cta] || WA_MESSAGES.default;
 
     const agent = nextAgent();
 
@@ -1239,19 +1367,71 @@ function wa(cta,message){
    COUNTDOWN
 ============================= */
 
-const DEADLINE = new Date("2026-07-31T23:59:59");
+const STORAGE_KEY = "akhtara_deadline_v1";
+const PROMO_DURATION = 3 * 24 * 60 * 60 * 1000; // 3 hari
+
+let deadline = localStorage.getItem(STORAGE_KEY);
+
+if (!deadline) {
+    deadline = Date.now() + PROMO_DURATION;
+    localStorage.setItem(STORAGE_KEY, deadline);
+} else {
+    deadline = Number(deadline);
+}
 
 function pad(n){
-
     return String(n).padStart(2,"0");
+}
 
+function lockLandingPage(){
+
+    if(document.getElementById("expired-overlay")) return;
+
+    document.body.classList.add("expired");
+
+    const overlay = document.createElement("div");
+    overlay.id = "expired-overlay";
+
+    overlay.innerHTML = `
+        <div class="expired-box">
+
+            <div class="expired-icon">⏰</div>
+
+            <h2>Promo Online Telah Berakhir</h2>
+
+            <p>
+                Promo yang Anda lihat sudah berakhir.
+                <br><br>
+                Hubungi Admin sekarang untuk mengetahui
+                promo terbaru yang masih tersedia.
+            </p>
+
+            <button
+                class="expired-btn"
+                onclick="expiredPromoCTA()"
+            >
+                Chat Admin Sekarang
+            </button>
+
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    document.body.style.overflow = "hidden";
 }
 
 function tick(){
 
-    let diff = DEADLINE - new Date();
+    let diff = deadline - Date.now();
 
-    if(diff < 0) diff = 0;
+    if(diff <= 0){
+
+        diff = 0;
+
+        lockLandingPage();
+
+    }
 
     const d = Math.floor(diff / 86400000);
 
@@ -1279,15 +1459,15 @@ function tick(){
 
         ["f-d","f-h","f-m","f-s"]
 
-    ].forEach(function(group){
+    ].forEach(group=>{
 
-        group.forEach(function(id,i){
+        group.forEach((id,i)=>{
 
-            const el = document.getElementById(id);
+            const el=document.getElementById(id);
 
             if(el){
 
-                el.textContent = value[i];
+                el.textContent=value[i];
 
             }
 
@@ -1300,6 +1480,19 @@ function tick(){
 tick();
 
 setInterval(tick,1000);
+
+/* =============================
+   POP UP
+============================= */
+    
+function expiredPromoCTA(){
+
+    wa(
+        "expired_promo",
+        "Halo Admin, saya ingin mengetahui promo terbaru Akhtara Residence."
+    );
+
+}
 
 /* =============================
    FAQ
