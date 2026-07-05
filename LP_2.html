@@ -1238,10 +1238,6 @@ const AGENTS = [
         phone: "6282294009151"
     },
     {
-        name: "Pak Guntur",
-        phone: "6282245327354"
-    },
-    {
         name: "Bu Ella",
         phone: "628113672396"
     }
@@ -1332,15 +1328,30 @@ const WA_MESSAGES = {
 
 };
 
+/* =============================
+   GENERATE EVENT ID
+============================= */
+
+function generateEventID() {
+
+    return "EVT-" +
+        Date.now() +
+        "-" +
+        Math.random().toString(36).substring(2, 8).toUpperCase();
+
+}
+
 /* ==========================================
    WHATSAPP
 ========================================== */
 
 function wa(cta, message){
-
+    const eventID = generateEventID();
     // Jika message tidak dikirim,
     // ambil dari WA_MESSAGES sesuai CTA
     message = message || WA_MESSAGES[cta] || WA_MESSAGES.default;
+
+    message += "\n\nKode Referensi: " + eventID;
 
     const agent = nextAgent();
 
@@ -1359,6 +1370,8 @@ function wa(cta, message){
     /* ===== Spreadsheet ===== */
 
     sendTracking({
+
+    event_id: eventID,
 
     landing_page: location.pathname,
 
