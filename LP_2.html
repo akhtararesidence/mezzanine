@@ -1223,7 +1223,9 @@ const TRACKING = {
     utm_medium: params.get("utm_medium") || "",
     utm_campaign: params.get("utm_campaign") || "",
     utm_content: params.get("utm_content") || "",
-    fbclid: params.get("fbclid") || ""
+    fbclid: params.get("fbclid") || "",
+    fbp: getCookie("_fbp"),
+    fbc: getCookie("_fbc")
 };
 
 /* =============================
@@ -1267,6 +1269,15 @@ function nextAgent(){
 /* =============================
    KIRIM DATA KE GOOGLE SHEET
 ============================= */
+function getCookie(name){
+
+    const match = document.cookie.match(
+        new RegExp("(^| )" + name + "=([^;]+)")
+    );
+
+    return match ? match[2] : "";
+
+}
 
 function sendTracking(data){
 
@@ -1280,7 +1291,19 @@ function sendTracking(data){
             "Content-Type":"application/json"
         },
 
-        body:JSON.stringify(data)
+        body:JSON.stringify({
+
+            lead_id: crypto.randomUUID(),
+
+            created_at: new Date().toISOString(),
+
+            landing_page: location.pathname,
+
+            page: location.href,
+
+            ...data
+
+        })
 
     });
 
@@ -1322,76 +1345,50 @@ function wa(cta, message){
     const agent = nextAgent();
 
     /* ===== Pixel ===== */
-
     if(typeof fbq==="function"){
 
-        fbq("track","Lead",{
+    fbq("track","Lead",{
 
-            content_name:"Akhtara Residence MOFU",
+        content_name:"Akhtara Residence",
 
-            content_category:cta,
+        content_category:cta
 
-            currency:"IDR",
+    });
 
-            value:395000000
-
-        });
-
-        if(cta==="booking"){
-
-            fbq("track","Lead",{
-
-                content_name:"Akhtara Residence Booking",
-
-                currency:"IDR",
-
-                value:1000000,
-
-                num_items:1
-
-            });
-
-        }
-
-        if(cta==="schedule"){
-
-            fbq("track","Lead",{
-
-                content_name:"Akhtara Residence Schedule Visit",
-
-                currency:"IDR",
-
-                value:395000000
-
-            });
-
-        }
-
-    }
-
+}
     /* ===== Spreadsheet ===== */
 
     sendTracking({
 
-        utm_source:TRACKING.utm_source,
+    landing_page: location.pathname,
 
-        utm_medium:TRACKING.utm_medium,
+    cta: cta,
 
-        utm_campaign:TRACKING.utm_campaign,
+    admin: agent.name,
 
-        utm_content:TRACKING.utm_content,
+    no_whatsapp: "",
 
-        fbclid:TRACKING.fbclid,
+    status: "Lead",
 
-        cta:cta,
+    lead_score: "Cold",
 
-        admin:agent.name,
+    catatan: "",
 
-        phone:agent.phone,
+    utm_source: TRACKING.utm_source,
 
-        page:location.href
+    utm_medium: TRACKING.utm_medium,
 
-    });
+    utm_campaign: TRACKING.utm_campaign,
+
+    utm_content: TRACKING.utm_content,
+
+    fbclid: TRACKING.fbclid,
+
+    fbp: TRACKING.fbp,
+
+    fbc: TRACKING.fbc
+
+});
 
     /* ===== WhatsApp ===== */
 
