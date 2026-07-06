@@ -1346,9 +1346,11 @@ function generateEventID() {
 ========================================== */
 
 function wa(cta, message){
+
+    // Generate SATU Event ID saja
     const eventID = generateEventID();
-    // Jika message tidak dikirim,
-    // ambil dari WA_MESSAGES sesuai CTA
+
+    // Jika message tidak dikirim
     message = message || WA_MESSAGES[cta] || WA_MESSAGES.default;
 
     message += "\n\nKode Referensi: " + eventID;
@@ -1356,17 +1358,27 @@ function wa(cta, message){
     const agent = nextAgent();
 
     /* ===== Pixel ===== */
-    if(typeof fbq==="function"){
 
-    fbq("track","Lead",{
+    if(typeof fbq === "function"){
 
-        content_name:"Akhtara Residence",
+        fbq(
+            "track",
+            "Lead",
+            {
 
-        content_category:cta
+                content_name: "Akhtara Residence",
 
-    });
+                content_category: cta
 
-}
+            },
+            {
+
+                eventID: eventID
+
+            }
+        );
+
+    }
     /* ===== Spreadsheet ===== */
 
     console.log({
@@ -1381,7 +1393,7 @@ function wa(cta, message){
 
     event_id: eventID,
 
-    llanding_page: location.href,
+    landing_page: location.href,
 
     cta: cta,
 
